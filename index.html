@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" crossorigin="anonymous">
+
+    <title>My Profile</title>
+
+
+</head>
+<body>
+<div id="root">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Enter your name </h4>
+                        <input type="text" v-model="name">
+                        <p class="card-text">
+                            Your name is: {{name}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Socail Link </h4>
+                        <ul>
+                            <li>
+                                <a :class="{'active': activeLink == 'link1'}" :href="link1.url" :title="link1.title" target="_blank">{{ link1.text}}</a>
+                            </li>
+                            <li><a :class="{'active': activeLink == 'link2'}" :href="link2.url" :title="link2.title" target="_blank">{{ link2.text}}</a></li>
+                            <li><a :href="link3.url" :title="link3.title" target="_blank">{{ link3.text}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">My Site</h4>
+                        <p v-html="html"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">List rendering</h4>
+                        <ol class="breadcrumb" v-for="(skill, i ) in skills">
+                            <li class="breadcrumb-item"><a href="#">{{i+1}}</a></li>
+                            <li class="breadcrumb-item"><a href="#">{{skill.name}}</a></li>
+                            <li class="breadcrumb-item">{{skill.experiance}}</li>
+                        </ol>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Conditional rendering</h4>
+                        <ol class="breadcrumb" v-for="(skill, i ) in skills" v-if="skill.experiance> 3">
+                            <li class="breadcrumb-item"><a href="#">{{i+1}}</a></li>
+                            <li class="breadcrumb-item"><a href="#">{{skill.name}}</a></li>
+                            <li class="breadcrumb-item">{{skill.experiance}}</li>
+                        </ol>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 pt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Conditional rendering</h4>
+                        <p v-if="show">
+                            Showing.....
+                        </p>
+
+                        <p v-else>
+                            Not Showing
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="vue.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+<script>
+    var app = new Vue({
+        el: "#root",
+        data: {
+            name: "Sazzad Bin Ashique",
+
+            link1: { text: "Facebook", title: "Please you to facebook", url: "http://facebook.com/sazzadbinashique"
+                 },
+            link2: { text: "Youtube", title: "Please you to youtube", url: "http://youtube.com/sazzadbinashique"
+                 },
+            link3: { text: "Instragram", title: "Please you to Instragram", url: "http://instragram.com/sazzad_bin_ashique"
+                 },
+
+            activeLink: "link1",
+
+            html: '<a href="http://sazzadbinashique.com">My webSite</a>',
+
+            skills:[
+                {name: "HTML", experiance: "5"},
+                {name: "CSS", experiance: "4"},
+                {name: "Bootstrap", experiance: "5"},
+                {name: "PHP", experiance: "3"},
+                {name: "Jquery", experiance: "3"}
+            ],
+
+             show: true
+
+
+
+        }
+    })
+
+</script>
+</body>
+</html>

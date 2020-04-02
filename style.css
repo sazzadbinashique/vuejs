@@ -1,0 +1,24 @@
+ul{
+    list-style: none;
+}
+li{
+    display: inline;
+}
+
+.active{
+    background: #1f2120;
+    color: aqua;
+    padding: 5px;
+}
+
+p a:hover{
+    text-decoration: none;
+}
+
+.randaring{
+    list-style: square;
+}
+
+.randaring li{
+    display: list-item;
+}
